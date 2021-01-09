@@ -108,7 +108,7 @@ generatePacmanConfig () {
 }
 
 prepareScriptPartTwo () {
-    echo "choseIntelOrAmd () {
+    echo 'choseIntelOrAmd () {
     echo "CPU model" 
     lscpu | grep name
     read -p "CPU intel or amd? ( i / a ): " var
@@ -187,7 +187,7 @@ selectRegion () {
     selectLang
 }
 
-selectRegion" > /mnt/partTwo.sh
+selectRegion' > /mnt/partTwo.sh
 }
 
 
