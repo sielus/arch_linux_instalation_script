@@ -131,7 +131,7 @@ installPackage () {
     
     if  [ "$installXfce" = "y" ] 
     then
-        pacman -Sy lightdm lightdm-gtk-greeter xfce4 xfce4-goodies
+        pacman -Sy lightdm lightdm-gtk-greeter xfce4 xfce4-goodies xorg xorg-server 
         systemctl enable lightdm.service
     fi
     pacman -Syyu -y
