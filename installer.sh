@@ -6,10 +6,10 @@ installBaseArch () {
 }
 
 prepareDisks () {
-   mkfs.ext4 $1
-   mount $1 /mnt 
-   mkswap $2
-   swapon $2
+   mkfs.ext4 /dev/$1
+   mount /dev/$1 /mnt 
+   mkswap /dev/$2
+   swapon /dev/$2
    clean
    lsblk /dev/$3
    installBaseArch
