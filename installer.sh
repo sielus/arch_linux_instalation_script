@@ -203,6 +203,7 @@ installBaseArch () {
     configPacman
     clear
     prepareScriptPartTwo
+    chmod +x /mnt/partTwo.sh
     arch-chroot /mnt ./partTwo.sh
 }
 
