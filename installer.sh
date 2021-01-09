@@ -142,6 +142,11 @@ installPackage () {
 
 
 configGrub () {
+
+    file=".disk.txt"
+
+    disk=$(cat "$file")     
+
     grub-install --target=i386-pc /dev/$disk
     grub-mkconfig -o /boot/grub/grub.cfg
     installPackage
@@ -150,11 +155,11 @@ configGrub () {
 createUser () {
     echo "Enter root passwd"
     passwd
-    read -p "Enter user login" login
+    read -p "Enter user login: " login
     useradd -m -G wheel,storage,power -s /bin/bash $login
     echo "Eter $login passwd"
     passwd $login
-    clean
+    clear
     configGrub
 }
 
@@ -166,10 +171,11 @@ createHostname () {
 }
 
 selectLang () {
-    read -p "Uncoment your language!"
+    pacman -Sy nano -y
+    read -p "Uncoment your language! Hit enter"
     nano /etc/locale.gen
     locale-gen
-    clean
+    clear
     createHostname
 }
 
@@ -183,7 +189,7 @@ selectRegion () {
     read -p "City: " city
     ln -sf /usr/share/zoneinfo/$region/$city /etc/localtime
     hwclock --systohc
-    clean
+    clear
     selectLang
 }
 
@@ -203,6 +209,7 @@ installBaseArch () {
     configPacman
     clear
     prepareScriptPartTwo
+    echo $disk > /mnt/.disk.txt
     chmod +x /mnt/partTwo.sh
     arch-chroot /mnt ./partTwo.sh
 }
@@ -212,7 +219,7 @@ prepareDisks () {
    mount /dev/$1 /mnt 
    mkswap /dev/$2
    swapon /dev/$2
-   clean
+   clear
    lsblk /dev/$3
    installBaseArch
 }
