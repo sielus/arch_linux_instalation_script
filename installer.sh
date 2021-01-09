@@ -1,9 +1,5 @@
 #!/bin/bash
 
-prepareScriptPartTwo () {
-    echo
-}
-
 generatePacmanConfig () {
 echo '#
 # /etc/pacman.conf
@@ -125,7 +121,6 @@ prepareScriptPartTwo () {
 }
 
 installPackage () { 
-    pacman -Sy networkmanager bash-completion network-manager-applet gvfs ntfs-3g git vlc steam mesa firefox aria2 gedit zip xarchiver a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore libreoffice-fresh ttf-hannom
     systemctl enable NetworkManager.service
     read -p "Install lightdm + xfce4? (y / n): " installXfce
     
@@ -199,7 +194,7 @@ configPacman () {
 }
 
 installBaseArch () {
-    pacstrap /mnt base linux linux-firmware base-devel nano grub 
+    pacstrap /mnt base linux linux-firmware base-devel nano grub networkmanager bash-completion network-manager-applet gvfs ntfs-3g git vlc steam mesa firefox aria2 gedit zip xarchiver a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore libreoffice-fresh ttf-hannom
     genfstab -U /mnt >> /mnt/etc/fstab 
     configPacman
     generatePacmanConfig
