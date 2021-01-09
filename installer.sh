@@ -201,7 +201,7 @@ installBaseArch () {
     generatePacmanConfig
     clear
     prepareScriptPartTwo
-    echo $disk > /mnt/.disk.txt
+    echo /dev/$disk > /mnt/.disk.txt
     chmod +x /mnt/partTwo.sh
     arch-chroot /mnt ./partTwo.sh
 }
