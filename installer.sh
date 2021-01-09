@@ -143,6 +143,7 @@ configGrub () {
 
     grub-install --target=i386-pc /dev/$disk
     grub-mkconfig -o /boot/grub/grub.cfg
+    rm -r $file
     installPackage
 }
 
