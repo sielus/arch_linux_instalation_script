@@ -174,15 +174,15 @@ selectLang () {
 }
 
 selectRegion () {
-    echo "Select your region"
-    ls /usr/share/zoneinfo/
-    read -p "Region: " region
+   # echo "Select your region"
+   # ls /usr/share/zoneinfo/
+   # read -p "Region: " region
     
-    echo "Select your city"
-    ls /usr/share/zoneinfo/$region/
-    read -p "City: " city
-    ln -sf /usr/share/zoneinfo/$region/$city /etc/localtime
-    hwclock --systohc
+   # echo "Select your city"
+   # ls /usr/share/zoneinfo/$region/
+   # read -p "City: " city
+   # ln -sf /usr/share/zoneinfo/$region/$city /etc/localtime
+    hwclock --systohc --utc
     clear
     selectLang
 }
